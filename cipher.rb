@@ -10,5 +10,5 @@ def caesar_cipher(string, shift = 1)
   string.chars.map { |c| encrypter.fetch(c, c) }
 end
 
-p caesar_cipher("testingzZ1Z").join
+p caesar_cipher("Check out my stringz").join
 
