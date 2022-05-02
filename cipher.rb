@@ -1,19 +1,14 @@
-ALPHABET_SIZE = 26
+def caesar_cipher(string, shift = 1)
+  alphabet  = Array('a'..'z')
+  non_caps  = Hash[alphabet.zip(alphabet.rotate(shift))]
+  
+  alphabet = Array('A'..'Z')
+  caps     = Hash[alphabet.zip(alphabet.rotate(shift))]
+  
+  encrypter = non_caps.merge(caps)
+  
+  string.chars.map { |c| encrypter.fetch(c, c) }
+end
 
-# Set the shift array for cipher
-# Use chars.map(&:ord)
-
-def ceaser_cipher(string)
-  shift_array = []
-  char_line = string.chars.map(&:ord)
-
-# Make sure it wraps after 'z'
-
-  shift = 1
-  ALPHABET_SIZE.times do |shift|
-    shift_array << char_line.map do |c|
-      ((c + shift) < 123 ? (c + shift) :(c + shift) - 26).chr
-    end.join
-  end
-
+p caesar_cipher("testingzZ1Z").join
 
